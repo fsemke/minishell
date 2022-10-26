@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:03:43 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/26 12:37:14 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/26 18:54:18 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	env(t_env *head)
 	tmp = head;
 	while (tmp)
 	{
-		printf("%s\n", tmp->var);
+		if (ft_memchr(tmp->var, '=', ft_strlen(tmp->var)) != NULL)
+			printf("%s\n", tmp->var);
 		tmp = tmp->next;
 	}
 }

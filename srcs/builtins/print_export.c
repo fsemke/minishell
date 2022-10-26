@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_export2.c                                 :+:      :+:    :+:   */
+/*   print_export.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:43:49 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/26 17:44:26 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/26 19:00:17 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ void	check_next_smaller(t_env **i, char **tmp_smallest,
 	*changed = 0;
 	while (*i)
 	{
-		if (ft_memchr((*i)->var, '=', ft_strlen((*i)->var)) != NULL
-			&& (strenv_cmp(*tmp_smallest, (*i)->var) > 0
+		if (strenv_cmp(*tmp_smallest, (*i)->var) > 0
 				&& (strenv_cmp(*last_printed, (*i)->var) < 0
-					|| *last_printed == NULL)))
+					|| *last_printed == NULL))
 		{
 			*tmp_smallest = (*i)->var;
 			*changed = 1;
@@ -39,7 +38,10 @@ void	print_smallest(char *tmp_smallest)
 	if (tmp_smallest)
 	{
 		list = split_var_val(tmp_smallest);
-		printf("declare -x %s=\"%s\"\n", list[0], list[1]);
+		if (ft_memchr(tmp_smallest, '=', ft_strlen(tmp_smallest)) != NULL)
+			printf("declare -x %s=\"%s\"\n", list[0], list[1]);
+		else
+			printf("declare -x %s\n", list[0]);
 		free(list[0]);
 		free(list[1]);
 		free(list);
