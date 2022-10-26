@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:43:49 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/26 19:00:17 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/26 19:03:16 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	check_next_smaller(t_env **i, char **tmp_smallest,
 	while (*i)
 	{
 		if (strenv_cmp(*tmp_smallest, (*i)->var) > 0
-				&& (strenv_cmp(*last_printed, (*i)->var) < 0
-					|| *last_printed == NULL))
+			&& (strenv_cmp(*last_printed, (*i)->var) < 0
+				|| *last_printed == NULL))
 		{
 			*tmp_smallest = (*i)->var;
 			*changed = 1;

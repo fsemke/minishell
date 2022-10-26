@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:54:37 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/26 18:38:36 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/26 19:02:51 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	export_variables(t_env *ptr, char *input)
 	t_env	*tmp;
 
 	tmp = ptr;
-	while (tmp)	{
+	while (tmp)
+	{
 		if (strenv_cmp(input, tmp->var) == 0)
 		{
 			if (ft_strchr(input, '=') != NULL)
