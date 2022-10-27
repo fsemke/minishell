@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:51:23 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/26 12:49:37 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 11:17:49 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	cd(t_exec *exec)
 	if (!token || token->type == PIPE)
 		chdir_to_home(token, exec->data->env);
 	else if (token->next && token->next->type != PIPE)
-		g_exit_code = ft_error("string not in pwd");
+		g_exit_code = ft_error("string not in pwd\n");
 	else if (chdir(token->token) != 0)
 		g_exit_code = ft_error("No such file or director\n");
 	getcwd(buffer, 1024);
