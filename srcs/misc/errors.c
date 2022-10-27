@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 23:05:33 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/27 14:29:08 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 14:38:41 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ void	error_path(t_exec *cmd)
 	{
 		write(2, path, ft_strlen(path));
 		write(2, ": No such file or directory\n", 28);
-		exit(127);
 	}
-	write(2, path, ft_strlen(path));
-	write(2, ": command not found\n", 20);
+	else
+	{
+		write(2, path, ft_strlen(path));
+		write(2, ": command not found\n", 20);
+	}
 	cleanup_tokens(cmd->data);
 	cleanup_exec(cmd->data);
 	clear_nodes(&cmd->data->env);
