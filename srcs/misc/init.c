@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 23:05:07 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/22 16:36:26 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 13:35:03 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ini_data(t_data *data)
 	data->search_it = NULL;
 	data->num_cmds = 0;
 	data->tokens = NULL;
+	data->here_fds = NULL;
 }
 
 /* create and fill the token node */

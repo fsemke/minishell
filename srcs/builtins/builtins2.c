@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:51:23 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/27 11:17:49 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 12:16:50 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,28 @@ void	chdir_to_home(t_token *token, t_env *iterator)
 	}
 }
 
+static
+int	search_dir(t_exec *exec, t_token *token)
+{
+	while(token && token->type != PIPE)
+	{
+		if (token->type == ARG)
+		{
+			if (chdir(token->token) == -1)
+			{
+				g_exit_code = ft_error("No such file or directory\n");
+				return (1);
+			}
+			return (0);
+		}
+		token = token->next;
+	}
+	chdir_to_home(token, exec->data->env);
+	return (0);
+}
+
 void	cd(t_exec *exec)
 {
-	t_token	*token;
 	char	buffer[1024];
 	char	old_path[1024];
 	char	*tmp;
@@ -45,16 +64,14 @@ void	cd(t_exec *exec)
 
 	getcwd(old_path, 1024);
 	var = ft_strjoin("OLDPWD=", old_path);
-	export(exec->data->env, var);
-	token = exec->cmd->next;
-	if (!token || token->type == PIPE)
-		chdir_to_home(token, exec->data->env);
-	else if (token->next && token->next->type != PIPE)
-		g_exit_code = ft_error("string not in pwd\n");
-	else if (chdir(token->token) != 0)
-		g_exit_code = ft_error("No such file or director\n");
+	if (search_dir(exec, exec->cmd->next) == 1)
+	{
+		free (var);
+		return ;
+	}
 	getcwd(buffer, 1024);
 	tmp = ft_strjoin("PWD=", buffer);
+	export(exec->data->env, var);
 	export(exec->data->env, tmp);
 	free (tmp);
 	free (var);

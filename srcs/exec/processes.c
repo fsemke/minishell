@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:37:14 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/26 11:39:11 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 13:37:04 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_new_process(t_exec *cmd)
 {
 	t_redir	*redir;
 
+	ft_clear_history(cmd->data->history, cmd->data);
 	redir = cmd->data->redir;
 	close(redir->saved_stdout);
 	close(redir->saved_stdin);
@@ -67,6 +68,7 @@ void	ft_new_process(t_exec *cmd)
 		write(2, strerror(errno), ft_strlen(strerror(errno)));
 		write(2, "\n", 1);
 	}
+	exit(EXIT_FAILURE);
 }
 
 void	child_process(t_exec *cmd, int *pipefd, int num_pipes)

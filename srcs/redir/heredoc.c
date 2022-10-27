@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdolinar <pdolinar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 14:34:41 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/25 21:01:02 by pdolinar         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:36:03 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void	run_heredoc(t_data *data)
 
 	token = data->tokens;
 	heredoc_num = count_type(token, HEREDOC);
+	if (heredoc_num < 1)
+		return ;
 	data->here_fds = malloc(sizeof(int) * (heredoc_num + 1));
 	i = 0;
 	while (token)

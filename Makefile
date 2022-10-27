@@ -6,13 +6,13 @@
 #    By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 13:06:26 by pdolinar          #+#    #+#              #
-#    Updated: 2022/10/26 17:50:06 by fsemke           ###   ########.fr        #
+#    Updated: 2022/10/27 11:03:04 by fsemke           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	minishell
 CC			:=	gcc
-CFLAGS		:=	-Wall -Wextra -Werror
+CFLAGS		:=	-g -Wall -Wextra -Werror
 RM			:=	rm -rf
 
 # dependencies
