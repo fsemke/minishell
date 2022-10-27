@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:12:33 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/27 14:29:32 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 14:42:53 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,10 +190,10 @@ int			pwd(void);
 void		env(t_env *head);
 void		echo(t_exec *exec);
 void		unset(t_env *ptr, t_exec *exec);
+int			strenv_cmp(const char *str1, const char *str2);
 
 /* builtins2 */
 void		cd(t_exec *exec);
-int			strenv_cmp(const char *str1, const char *str2);
 int			ft_exit(t_exec *exec);
 
 /* builtins_export */

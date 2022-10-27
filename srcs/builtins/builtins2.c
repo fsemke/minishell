@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:51:23 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/27 12:16:50 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 14:42:07 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	chdir_to_home(t_token *token, t_env *iterator)
 static
 int	search_dir(t_exec *exec, t_token *token)
 {
-	while(token && token->type != PIPE)
+	while (token && token->type != PIPE)
 	{
 		if (token->type == ARG)
 		{
@@ -75,34 +75,6 @@ void	cd(t_exec *exec)
 	export(exec->data->env, tmp);
 	free (tmp);
 	free (var);
-}
-
-int	strenv_cmp(const char *str1, const char *str2)
-{
-	unsigned char		*s1;
-	unsigned char		*s2;
-	size_t				i;
-	char				tmp_s1;
-	char				tmp_s2;
-
-	if (!str1)
-		return ((int)str2[0]);
-	i = 0;
-	s1 = (unsigned char *)str1;
-	s2 = (unsigned char *)str2;
-	if (s1 == NULL)
-		return (s2[0]);
-	while (s1[i] == s2[i] && s1[i] != '=' && s2[i] != '=' && (s1[i] || s2[i]))
-		i++;
-	if (s1[i] == '=')
-		tmp_s1 = 0;
-	else
-		tmp_s1 = s1[i];
-	if (s2[i] == '=')
-		tmp_s2 = 0;
-	else
-		tmp_s2 = s2[i];
-	return (tmp_s1 - tmp_s2);
 }
 
 static

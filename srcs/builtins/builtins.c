@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:03:43 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/26 18:54:18 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 14:42:29 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,32 @@ void	unset(t_env *ptr, t_exec *exec)
 		tmp = tmp->next;
 	}
 	return ;
+}
+
+int	strenv_cmp(const char *str1, const char *str2)
+{
+	unsigned char		*s1;
+	unsigned char		*s2;
+	size_t				i;
+	char				tmp_s1;
+	char				tmp_s2;
+
+	if (!str1)
+		return ((int)str2[0]);
+	i = 0;
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	if (s1 == NULL)
+		return (s2[0]);
+	while (s1[i] == s2[i] && s1[i] != '=' && s2[i] != '=' && (s1[i] || s2[i]))
+		i++;
+	if (s1[i] == '=')
+		tmp_s1 = 0;
+	else
+		tmp_s1 = s1[i];
+	if (s2[i] == '=')
+		tmp_s2 = 0;
+	else
+		tmp_s2 = s2[i];
+	return (tmp_s1 - tmp_s2);
 }

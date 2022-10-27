@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 23:05:33 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/27 14:38:41 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 14:48:12 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /* return error message for invalid bash command*/
 void	error_path(t_exec *cmd)
 {
-	char *path;
-	t_env *env;
+	char	*path;
+	t_env	*env;
 
 	path = cmd->cmd->token;
 	env = cmd->data->env;
