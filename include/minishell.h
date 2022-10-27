@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:12:33 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/27 10:34:13 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 14:29:32 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,7 @@ void		cleanup_exec(t_data *data);
 void		free_double_p(char **local_paths);
 
 /* error */
-void		error_path(char *path, t_env *env);
+void		error_path(t_exec *cmd);
 void		fd_pid_error(int fd, pid_t pid);
 
 #endif

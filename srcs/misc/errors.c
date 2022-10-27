@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_piping.c                                     :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdolinar <pdolinar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 23:05:33 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/25 22:10:13 by pdolinar         ###   ########.fr       */
+/*   Updated: 2022/10/27 14:29:08 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /* return error message for invalid bash command*/
-void	error_path(char *path, t_env *env)
+void	error_path(t_exec *cmd)
 {
+	char *path;
+	t_env *env;
+
+	path = cmd->cmd->token;
+	env = cmd->data->env;
 	if (find_path(env) == NULL)
 	{
 		write(2, path, ft_strlen(path));
@@ -23,6 +28,10 @@ void	error_path(char *path, t_env *env)
 	}
 	write(2, path, ft_strlen(path));
 	write(2, ": command not found\n", 20);
+	cleanup_tokens(cmd->data);
+	cleanup_exec(cmd->data);
+	clear_nodes(&cmd->data->env);
+	free(cmd->data->redir);
 	exit(127);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:37:14 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/27 13:37:04 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 14:29:15 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,7 @@ void	ft_new_process(t_exec *cmd)
 	close(redir->saved_stdout);
 	close(redir->saved_stdin);
 	if (cmd->path == NULL)
-	{
-		cleanup_tokens(cmd->data);
-		cleanup_exec(cmd->data);
-		clear_nodes(&cmd->data->env);
-		free(cmd->data->redir);
-		error_path(cmd->cmd->token, cmd->data->env);
-	}
+		error_path(cmd);
 	if (execve(cmd->path, cmd->options, cmd->data->envp) == -1)
 	{
 		write(2, strerror(errno), ft_strlen(strerror(errno)));
