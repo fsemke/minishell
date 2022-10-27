@@ -62,7 +62,13 @@ void	ft_new_process(t_exec *cmd)
 	close(redir->saved_stdout);
 	close(redir->saved_stdin);
 	if (cmd->path == NULL)
+	{
+		cleanup_tokens(cmd->data);
+		cleanup_exec(cmd->data);
+		clear_nodes(&cmd->data->env);
+		free(cmd->data->redir);
 		error_path(cmd->cmd->token, cmd->data->env);
+	}
 	if (execve(cmd->path, cmd->options, cmd->data->envp) == -1)
 	{
 		write(2, strerror(errno), ft_strlen(strerror(errno)));
