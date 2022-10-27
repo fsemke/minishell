@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:54:37 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/26 19:02:51 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 10:29:59 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,13 @@ void	export(t_env *ptr, char *input)
 		return ;
 	}
 	export_variables(ptr, input);
+}
+
+void	export_recursive(t_env *ptr, t_token *token)
+{
+	while (token && token->type == ARG)
+	{
+		export(ptr, token->token);
+		token = token->next;
+	}
 }

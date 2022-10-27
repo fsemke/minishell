@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 23:05:31 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/26 12:37:27 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 10:33:42 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	return_builtin(int type, t_exec *cmd)
 		echo(cmd);
 	else if (type == EXP)
 	{
-		if (cmd->cmd->next)
-			export(cmd->data->env, cmd->cmd->next->token);
+		if (cmd->cmd->next && cmd->cmd->next->type == ARG)
+			export_recursive(cmd->data->env, cmd->cmd->next);
 		else
 			export(cmd->data->env, NULL);
 	}

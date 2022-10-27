@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:12:33 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/26 18:11:21 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 10:34:13 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,7 @@ int			ft_exit(t_exec *exec);
 
 /* builtins_export */
 void		export(t_env *ptr, char *input);
+void		export_recursive(t_env *ptr, t_token *token);
 
 /* print_export */
 void		print_export(t_env *env);
