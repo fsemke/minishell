@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:41:57 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/27 13:34:02 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/10/27 13:51:41 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	restore_stdinout(t_data *data)
 		unlink(tmp_name);
 		free(tmp_name);
 	}
-	free(data->here_fds);
+	if (data->here_fds)
+		free(data->here_fds);
 }
 
 int	ft_exec(t_exec *cmd)
