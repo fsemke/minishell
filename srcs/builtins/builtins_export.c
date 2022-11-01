@@ -52,10 +52,8 @@ void	export_variables(t_env *ptr, char *input)
 			{
 				free(tmp->var);
 				tmp->var = ft_strdup(input);
-				return ;
 			}
-			else
-				return ;
+			return ;
 		}
 		tmp = tmp->next;
 	}
