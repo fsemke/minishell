@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:03:43 by fsemke            #+#    #+#             */
-/*   Updated: 2022/10/27 14:42:29 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/11/01 19:52:03 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	echo(t_exec *exec)
 		printf("\n");
 }
 
-void	unset(t_env *ptr, t_exec *exec)
+void	unset(t_data *data, t_exec *exec)
 {
 	t_env	*tmp;
 	char	*var;
@@ -70,14 +70,14 @@ void	unset(t_env *ptr, t_exec *exec)
 		var = exec->cmd->next->token;
 	else
 		return ;
-	if (ptr == NULL)
+	if (data->env == NULL)
 		return ;
-	tmp = ptr;
+	tmp = data->env;
 	while (tmp)
 	{
 		if (strenv_cmp(var, tmp->var) == 0)
 		{
-			remove_node(&ptr, tmp);
+			remove_node(data, tmp);
 			return ;
 		}
 		tmp = tmp->next;

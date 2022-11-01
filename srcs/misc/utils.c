@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdolinar <pdolinar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 23:05:33 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/25 22:14:29 by pdolinar         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:53:58 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	remove_node(t_env **head, t_env *remove)
+void	remove_node(t_data *data, t_env *remove)
 {
 	t_env	*tmp;
 
-	if (remove == *head)
-		*head = remove->next;
+	if (remove == data->env)
+		data->env = remove->next;
 	else
 	{
-		tmp = *head;
+		tmp = data->env;
 		while (tmp && tmp->next != remove)
 			tmp = tmp->next;
 		tmp->next = remove->next;

@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:12:33 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/27 14:42:53 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/11/01 19:56:11 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ void		ft_redir(t_exec *cmd, int *filefd);
 void		handle_signal(int i);
 
 /* utils */
-void		remove_node(t_env **head, t_env *remove);
+void		remove_node(t_data *data, t_env *remove);
 void		add_node(t_env **head, t_env *new);
 t_env		*init_node(char *str);
 int			linking_nodes(char *str, t_env **head);
@@ -189,7 +189,7 @@ int			count_type(t_token *token, int type);
 int			pwd(void);
 void		env(t_env *head);
 void		echo(t_exec *exec);
-void		unset(t_env *ptr, t_exec *exec);
+void		unset(t_data *data, t_exec *exec);
 int			strenv_cmp(const char *str1, const char *str2);
 
 /* builtins2 */

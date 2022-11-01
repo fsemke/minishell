@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 23:05:31 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/27 10:33:42 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/11/01 19:50:39 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	return_builtin(int type, t_exec *cmd)
 			export(cmd->data->env, NULL);
 	}
 	else if (type == UNSET)
-		unset(cmd->data->env, cmd);
+		unset(cmd->data, cmd);
 	else if (type == EXIT)
 		return (ft_exit(cmd));
 	else if (type == ENV)
