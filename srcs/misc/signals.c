@@ -66,4 +66,5 @@ void	handle_signal(int i)
 		new_action.sa_handler = &sig_handler;
 	sigaction(SIGINT, &new_action, NULL);
 	sigaction(SIGQUIT, &new_action, NULL);
+	sigaction(SIGPIPE, &new_action, NULL);
 }
