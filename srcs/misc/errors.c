@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 23:05:33 by pdolinar          #+#    #+#             */
-/*   Updated: 2022/10/27 14:48:12 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/11/02 10:53:17 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	error_path(t_exec *cmd)
 		write(2, path, ft_strlen(path));
 		write(2, ": command not found\n", 20);
 	}
-	cleanup_tokens(cmd->data);
-	cleanup_exec(cmd->data);
 	clear_nodes(&cmd->data->env);
 	free(cmd->data->redir);
+	cleanup_tokens(cmd->data);
+	cleanup_exec(cmd->data);
 	exit(127);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fsemke <fsemke@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:03:43 by fsemke            #+#    #+#             */
-/*   Updated: 2022/11/01 19:52:03 by fsemke           ###   ########.fr       */
+/*   Updated: 2022/11/02 10:45:32 by fsemke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	env(t_env *head)
 {
 	t_env	*tmp;
 
+	if (!head)
+		return ;
 	tmp = head;
 	while (tmp)
 	{
