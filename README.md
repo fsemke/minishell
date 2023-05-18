@@ -9,7 +9,7 @@ Run it with: ```./minishell```
 ## Available cmds
 Executables can be run from an absolute, relative or environmental PATH (``/bin/ls``, ``ls``) including arguments or options.
 The symbols ``'`` and ``"`` work as in bash.
-We have also build a history that you can call with ``history``.
+We have also created a history that you can call up with ``history``.
 
 You can use redirections ``> >> <`` and pipes ``|``.
 Environment variables, including the return code ``$?`` are also working.
